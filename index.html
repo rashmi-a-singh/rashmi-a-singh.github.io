@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rashmi Singh · Computer Vision Engineer</title>
+  <meta name="description" content="Rashmi Singh, Computer Vision Engineer in Mumbai. Ground truth, model validation, edge deployment and camera calibration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Computer Vision Engineer · Mumbai</p>
+    <h1>Rashmi Singh</h1>
+    <p class="tagline">I build ground truth, measure how far a vision system is from reality, and find out why.</p>
+    <div class="buttons">
+      <a class="btn" href="https://github.com/rashmi-a-singh" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/rashmi-singh-0654871b2/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-solid" href="mailto:468.rashmi.singh@gmail.com">Email me</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOW I WORK ============ -->
+<section class="wrap">
+  <h2>How I work</h2>
+  <p class="lead">I trained as an instrumentation engineer, where a reading is only as good as its calibration. I took that into building controls at Johnson Controls, working with sensor points and control logic. At LSE, I designed the ground-truth study for a 1M+ image street-imagery pipeline and found that it counted only 52.7% of the people actually present. I now bring the same habit to cameras and edge models: every result on this page is measured against a reference.</p>
+</section>
+
+<!-- ============ FEATURED WORK ============ -->
+<section class="wrap">
+  <h2>Featured work</h2>
+
+  <!-- Project 1 -->
+  <article class="card">
+    <p class="tags">Ground truth · Model validation · Data integrity</p>
+    <h3>GSV-Jakarta: auditing a street-imagery pipeline <span class="where">LSE</span></h3>
+    <div class="stats">
+      <div><strong>52.7%</strong><span>of people actually found</span></div>
+      <div><strong>2,563</strong><span>people hand-labelled</span></div>
+      <div><strong>1.4M</strong><span>images segmented</span></div>
+    </div>
+    <p>On an FCDO-funded LSE project, a team pipeline detected and classified pedestrians in 1M+ Google Street View images of Jakarta. I designed its only blind, probability-weighted ground-truth sample and measured what the model really found.</p>
+    <ul>
+      <li>Hand-labelled 2,563 people in CVAT without seeing the model's output (κ = 0.85 intra-annotator)</li>
+      <li>The pipeline counted 52.7% of people present (95% CI 46.6–58.9), with 21.5% false detections, even though its aggregate ratios looked correct</li>
+      <li>Found three silent failures: a wrong model loading without an error, an index collapsing 347,237 files to 39,988, and 68.8% duplicate rows</li>
+      <li>Delivered a 1.4M-image semantic segmentation dataset with 28 categories</li>
+    </ul>
+    <a class="link" href="https://rashmi-a-singh.github.io/gsv-jakarta/" target="_blank" rel="noopener">Project site →</a>
+  </article>
+
+  <!-- Project 2 -->
+  <article class="card">
+    <p class="tags">ONNX Runtime · C++17 · Quantization · Qualcomm AI Hub</p>
+    <h3>YOLOv8 at the edge: Python → C++ → INT8 on Snapdragon</h3>
+    <div class="stats">
+      <div><strong>3.5×</strong><span>smaller model</span></div>
+      <div><strong>1.5×</strong><span>faster on phone NPU</span></div>
+      <div><strong>0.0</strong><span>C++ vs Python difference</span></div>
+    </div>
+    <p>I wrote YOLOv8 inference by hand (letterbox, tensor layout, box decoding, NMS), ported it to C++, then quantised it for a phone NPU.</p>
+    <ul>
+      <li>The C++ port matches Python bit-for-bit (max difference 0.0). All 26 unit tests pass, with no sanitizer errors.</li>
+      <li>C++ pre-processing is about 2.8× faster than Python. Inference time is the same, because both use the same engine.</li>
+      <li>The first INT8 model scored mAP 0. I traced this to every output score rounding to zero, kept the decode step in FP32, and recovered the accuracy.</li>
+      <li>Result: 3.5× smaller (12.2 → 3.5 MB), about 1.5× faster on the Snapdragon 8 Gen 3 NPU (3.34 → 2.20 ms), with mAP50-95 going from 0.381 to 0.366.</li>
+    </ul>
+    <a class="link" href="https://github.com/rashmi-a-singh/yolov8-onnx-inference-from-scratch" target="_blank" rel="noopener">Python version on GitHub →</a>
+  </article>
+
+  <!-- Project 3 -->
+  <article class="card">
+    <p class="tags">OpenCV · ChArUco · Geometric vision <span class="badge">In progress</span></p>
+    <h3>Camera calibration lab</h3>
+    <div class="stats">
+      <div><strong>1.62 → 0.82</strong><span>px reprojection error</span></div>
+      <div><strong>±0.26%</strong><span>focal-length stability</span></div>
+      <div><strong>57 → 85%</strong><span>image coverage</span></div>
+    </div>
+    <p>Calibrating a phone camera with a ChArUco board shown on a monitor. This is the first module of a 3D perception portfolio.</p>
+    <ul>
+      <li>Residual plots showed the monitor's moiré pattern was biasing corner detection</li>
+      <li>A light blur before detection cut RMS reprojection error from 1.62 to 0.82 px, while keeping all 1,330 corners</li>
+      <li>Bootstrapping 50 random image subsets showed the focal length is stable to ±0.26%</li>
+      <li>A coverage map showed blind spots at the image edges. Extra edge shots raised coverage from 57% to 85%.</li>
+    </ul>
+    <p class="next">Next: PnP pose, homography, point clouds, ROS2.</p>
+  </article>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="wrap">
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>London School of Economics · Computer Vision Consultant</h3>
+      <span class="date">Remote · Jul 2025 – Jul 2026</span>
+    </div>
+    <p>FCDO-funded project (PI: Prof. Guy Michaels). I worked on ground-truth study design, model validation, pipeline auditing, data-integrity engineering and segmentation delivery. I'm contributing to a research paper on female pedestrian presence and streetscape quality.</p>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Johnson Controls · Graduate Engineering Trainee → Sr. Design Engineer</h3>
+      <span class="date">Mumbai · Sep 2022 – Mar 2024 · promoted Oct 2023</span>
+    </div>
+    <p>BMS/HVAC controls: sensor point mapping and control logic. I built an Excel-based risk-assessment system that cut manual review time by 40%, plus VBA automation for proposals and budget forecasting.</p>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <h3>Education · BE Instrumentation Engineering, VESIT</h3>
+      <span class="date">2018 – 2022 · GPA 8.93/10</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EARLIER WORK ============ -->
+<section class="wrap">
+  <h2>Earlier work</h2>
+  <article class="card card-small">
+    <h3>HVAC predictive maintenance</h3>
+    <p>A LightGBM classifier that predicts equipment failure from sensor time-series. It uses NASA's turbofan run-to-failure data as a stand-in for HVAC compressors and reached 96.1% accuracy on held-out test data.</p>
+    <a class="link" href="https://github.com/rashmi-a-singh/HVAC-predictive-maintenance" target="_blank" rel="noopener">GitHub →</a>
+  </article>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="wrap">
+  <h2>Skills</h2>
+  <dl class="skills">
+    <dt>Computer vision</dt><dd>Object detection, segmentation, classification, YOLO, EfficientNet, camera calibration</dd>
+    <dt>Evaluation</dt><dd>Ground-truth design, stratified sampling, bootstrap confidence intervals, measurement-error analysis</dd>
+    <dt>Deployment</dt><dd>ONNX Runtime, C++17, INT8 quantization, Qualcomm AI Hub, latency benchmarking</dd>
+    <dt>Tools</dt><dd>Python, PyTorch, OpenCV, NumPy, Pandas, Git, Docker, Kaggle</dd>
+  </dl>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <p>Open to Computer Vision, ML and perception roles, either remote worldwide or on-site in India.</p>
+    <div class="buttons">
+      <a class="btn btn-light" href="mailto:468.rashmi.singh@gmail.com">468.rashmi.singh@gmail.com</a>
+      <a class="btn btn-light" href="https://www.linkedin.com/in/rashmi-singh-0654871b2/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-light" href="https://github.com/rashmi-a-singh" target="_blank" rel="noopener">GitHub</a>
+      <!-- Resume button goes here later -->
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

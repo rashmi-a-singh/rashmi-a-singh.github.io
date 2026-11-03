@@ -1,0 +1,181 @@
+/* ===== Colours: change these to restyle the whole site ===== */
+:root {
+  --navy: #1B2A4A;      /* midnight blue: headings, buttons */
+  --navy-soft: #2E4372;
+  --gold: #B8892B;      /* accent: tags, numbers */
+  --gold-bg: #FBF4E4;
+  --text: #2B2F38;
+  --muted: #5F6675;
+  --line: #E4E7EE;
+  --bg: #FFFFFF;
+  --bg-soft: #F6F7FA;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+/* ===== Header ===== */
+.hero {
+  background: var(--navy);
+  color: #fff;
+  padding: 88px 0 72px;
+}
+.eyebrow {
+  margin: 0 0 8px;
+  color: #E6C77A;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+h1 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(44px, 8vw, 68px);
+  line-height: 1.05;
+  margin: 0 0 18px;
+}
+.tagline { font-size: 21px; max-width: 34ch; margin: 0 0 32px; color: #DCE2EE; }
+
+/* ===== Buttons ===== */
+.buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1.5px solid #fff;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background .2s, color .2s;
+}
+.btn:hover { background: #fff; color: var(--navy); }
+.btn-solid { background: #E6C77A; border-color: #E6C77A; color: var(--navy); }
+.btn-solid:hover { background: #fff; border-color: #fff; }
+.btn-light { border-color: rgba(255,255,255,.5); }
+
+/* ===== Sections ===== */
+main section { padding-top: 64px; }
+h2 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--navy);
+  margin: 0 0 20px;
+}
+h3 { color: var(--navy); font-size: 20px; line-height: 1.35; margin: 0 0 14px; }
+.lead { font-size: 18px; margin: 0; }
+
+/* ===== Project cards ===== */
+.card {
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--navy);
+  border-radius: 10px;
+  padding: 28px;
+  margin-bottom: 24px;
+  background: var(--bg);
+}
+.card-small { border-top-width: 1px; }
+.tags {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+}
+.where {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-left: 6px;
+  white-space: nowrap;
+}
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--gold-bg);
+  border: 1px solid #E8D3A3;
+  color: #8A6418;
+  font-size: 12px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 6px 0 20px;
+}
+.stats div {
+  background: var(--bg-soft);
+  border-radius: 8px;
+  padding: 14px 12px;
+}
+.stats strong {
+  display: block;
+  font-size: 24px;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.stats span { font-size: 13px; color: var(--muted); }
+.card p { margin: 0 0 12px; }
+.card ul { margin: 0 0 18px; padding-left: 20px; }
+.card li { margin-bottom: 6px; }
+.next { color: var(--muted); font-style: italic; margin-bottom: 0 !important; }
+.link {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid #E6C77A;
+}
+.link:hover { color: var(--gold); }
+
+/* ===== Experience ===== */
+.job { border-left: 3px solid var(--line); padding: 2px 0 2px 20px; margin-bottom: 26px; }
+.job-head { margin-bottom: 6px; }
+.job h3 { margin: 0; }
+.date { font-size: 14px; color: var(--muted); }
+.job p { margin: 6px 0 0; }
+
+/* ===== Skills ===== */
+.skills {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 10px 20px;
+  margin: 0;
+}
+.skills dt { font-weight: 600; color: var(--navy); }
+.skills dd { margin: 0; }
+
+/* ===== Footer ===== */
+footer {
+  margin-top: 80px;
+  background: var(--navy);
+  color: #DCE2EE;
+  padding: 48px 0;
+}
+footer p { margin: 0 0 18px; font-size: 18px; }
+
+/* ===== Phones ===== */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .hero { padding: 60px 0 52px; }
+  .tagline { font-size: 18px; }
+  .card { padding: 20px; }
+  .stats { grid-template-columns: 1fr; }
+  .stats div { display: flex; align-items: baseline; gap: 10px; }
+  .stats strong { font-size: 20px; }
+  .skills { grid-template-columns: 1fr; gap: 2px; }
+  .skills dd { margin-bottom: 12px; }
+}
