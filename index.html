@@ -66,6 +66,10 @@
       <div><strong>1.5×</strong><span>faster on phone NPU</span></div>
       <div><strong>0.0</strong><span>C++ vs Python difference</span></div>
     </div>
+    <figure class="narrow">
+      <img src="cpp-vs-python.jpg" alt="YOLOv8 detections from the C++ port and the Python version side by side, with identical boxes" loading="lazy">
+      <figcaption>The same image through my C++ port (left) and the Python version (right): identical boxes.</figcaption>
+    </figure>
     <p>I wrote YOLOv8 inference by hand (letterbox, tensor layout, box decoding, NMS), ported it to C++, then quantised it for a phone NPU.</p>
     <ul>
       <li>The C++ port matches Python bit-for-bit (max difference 0.0). All 26 unit tests pass, with no sanitizer errors.</li>
@@ -85,6 +89,10 @@
       <div><strong>±0.26%</strong><span>focal-length stability</span></div>
       <div><strong>57 → 85%</strong><span>image coverage</span></div>
     </div>
+    <figure>
+      <img src="calibration-moire.jpg" alt="ChArUco board photo and a zoomed corner showing moiré stripes pulling the detected corner away from the model corner" loading="lazy">
+      <figcaption>The worst corner (17 px off): the monitor's moiré stripes pull the detected corner (red +) away from where the model puts it (cyan ×).</figcaption>
+    </figure>
     <p>Calibrating a phone camera with a ChArUco board shown on a monitor. This is the first module of a 3D perception portfolio.</p>
     <ul>
       <li>Residual plots showed the monitor's moiré pattern was biasing corner detection</li>
